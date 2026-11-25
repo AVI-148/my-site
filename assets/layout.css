@@ -137,7 +137,13 @@
 .td-section__lead { text-align: center; color: var(--muted-foreground); max-width: 40rem; margin: 0.75rem auto 0; line-height: 1.7; }
 
 .td-grid { display: grid; gap: 1.25rem; margin-top: 2rem; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); }
-.td-grid--3 { grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); }
+/* Centered row of up to 3 cards (contact page); wraps and stays centered on any width */
+.td-grid--3 { display: flex; flex-wrap: wrap; justify-content: center; }
+.td-grid--3 > * { flex: 1 1 240px; max-width: 340px; }
+/* Fixed 4-up grid (popular destinations: 7 + "more"): 4 on desktop, 2 on tablet, 1 on phone */
+.td-grid--4 { grid-template-columns: repeat(4, 1fr); }
+@media (max-width: 1024px) { .td-grid--4 { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 520px) { .td-grid--4 { grid-template-columns: 1fr; } }
 
 .td-card {
   background: var(--card);
